@@ -1,0 +1,18 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: 'email-notifications'
+
+receivers:
+- name: 'email-notifications'
+  email_configs:
+  - to: 'seu-email@exemplo.com'  # ALTERE PARA SEU EMAIL
+    from: 'alertmanager@exemplo.com'  # ALTERE PARA SEU EMAIL DE ENVIO
+    smarthost: 'smtp.gmail.com:587'  # ALTERE PARA SEU SERVIDOR SMTP
+    auth_username: 'seu-email@exemplo.com'  # ALTERE PARA SEU EMAIL
+    auth_password: 'sua-senha'  # ALTERE PARA SUA SENHA

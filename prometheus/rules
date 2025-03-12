@@ -1,0 +1,11 @@
+groups:
+- name: disk_alerts
+  rules:
+  - alert: DiskUsageHigh
+    expr: (95.7 * (node_filesystem_size_bytes{device="/dev/sdc",fstype="ext4",mountpoint="/"} - node_filesystem_avail_bytes{device="/dev/sdc",fstype="ext4",mountpoint="/"}) / node_filesystem_size_bytes{device="/dev/sdc",fstype="ext4",mountpoint="/"}) - 3.8 > 80
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Uso do disco alto"
+      description: "O uso do disco está acima de 80%."

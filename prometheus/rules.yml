@@ -1,0 +1,19 @@
+groups:
+  - name: node_alerts
+    rules:
+      - alert: SimpleTestAlert
+        expr: vector(1)
+        for: 15s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Alerta Simples"
+          description: "Este é um alerta simples para verificar se as regras estão sendo carregadas corretamente."
+      - alert: DebugAlert
+        expr: vector(1)
+        for: 15s
+        labels:
+          severity: debug
+        annotations:
+          summary: "Debug Alert"
+          description: "Esta é uma regra de depuração para verificar se o Prometheus está lendo o arquivo."
